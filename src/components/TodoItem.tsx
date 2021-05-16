@@ -5,12 +5,15 @@ import { List } from "./Form";
 type Props = { 
   list: List; 
   index: number;
+  
 };
 
 const TodoItem: React.VFC<Props> = ({list, index}) => {
 
   return (
-      <div>{list.todo}</div>
+    <div>
+      {list.todo}
+    </div>
   );
 };
 

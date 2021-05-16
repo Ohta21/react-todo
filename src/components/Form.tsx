@@ -16,14 +16,6 @@ const Form: React.VFC = () => {
     setTodo("");
   };
 
-  const deleteTodo = (id: number) => {
-    const deleteFilter = lists.filter((list, index) => {
-      return id !== index;
-    });
-    setLists(deleteFilter);
-  };
-
-
   const isUncreable = todo === "";
 
   return (
@@ -45,7 +37,7 @@ const Form: React.VFC = () => {
       </form>
       <div>
         {lists.map((list: List, index:number) => {
-          return <TodoItem list={list} index={index}/>;
+          return <TodoItem list={list} index={index} />;
         })}
       </div>
     </div>
