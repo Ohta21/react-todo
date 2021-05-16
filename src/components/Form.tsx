@@ -16,13 +16,6 @@ const Form: React.VFC = () => {
     setTodo("");
   };
 
-  // const deleteTodo = (id: number) => {
-  //   const deleteFilter = lists.filter((list, index) => {
-  //     return id !== index;
-  //   });
-  //   setLists(deleteFilter);
-  // };
-
   const deleteTodo = (id: number) => {
     const deleteFilter = lists.filter((list, index) => {
       return id !== index;
@@ -37,7 +30,6 @@ const Form: React.VFC = () => {
     <div>
       <form
         onSubmit={(e) => {
-          console.log(e)
           e.preventDefault();
           addTodo(todo);
         }}
