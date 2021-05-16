@@ -6,7 +6,7 @@ type Props = {
   list: List; 
   index: number;
   deleteTodo: (id: number) => void;
-};
+}
 
 const TodoItem: React.VFC<Props> = ({list, index, deleteTodo}) => {
 
@@ -17,5 +17,5 @@ const TodoItem: React.VFC<Props> = ({list, index, deleteTodo}) => {
     </div>
   );
 };
-
+  
 export default TodoItem;
