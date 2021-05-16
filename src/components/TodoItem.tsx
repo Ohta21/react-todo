@@ -5,8 +5,8 @@ import { List } from "./Form";
 type Props = {
   list: List;
   index: number;
-  deleteTodo: (id: number) => void;
-  editTodo: (text: string, id: number) => void;
+  deleteTodo: (index: number) => void;
+  editTodo: (text: string, index: number) => void;
 };
 
 const TodoItem: React.VFC<Props> = ({ list, index, deleteTodo, editTodo }) => {

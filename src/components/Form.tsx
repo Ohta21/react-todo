@@ -17,15 +17,15 @@ const Form: React.VFC = () => {
   };
 
   const deleteTodo = (index: number) => {
-    const deleteFilter = lists.filter((list, id) => {
-      return id !== index;
+    const deleteFilter = lists.filter((list, index) => {
+      return index !== index;
     });
     setLists(deleteFilter);
   };
 
-  const editTodo = (todo: string, id: number) => {
+  const editTodo = (todo: string, index: number) => {
     const editLists = lists.map((list, index) => {
-      if (id === index) {
+      if (index === index) {
         lists.list = todo;
       }
     });
