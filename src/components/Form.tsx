@@ -11,19 +11,27 @@ const Form: React.VFC = () => {
   const [lists, setLists] = useState<List[]>([]);
 
   const addTodo = (todo: string) => {
-    const addList = [...lists, { todo }]; //[0{todo: "勉強"},1{todo:"走る"},2{todo: "夜ご飯買う"}]
+    const addList = [...lists, { todo }]; //[todo: "勉強",todo:"走る",todo: "夜ご飯買う"]
     setLists(addList);
     setTodo("");
   };
 
-  const deleteTodo = (id: number) => {
+  const deleteTodo = (deleteIndex: number) => {
     const deleteFilter = lists.filter((list, index) => {
-      return id !== index;
+      return deleteIndex !== index;
     });
     setLists(deleteFilter);
   };
 
-  const isUncreable = todo === "";
+  const editTodo = (todo: string, editIndex: number) => {
+    const editLists = lists.map((list, index) => {
+      if (editIndex === index) {
+        lists.list = todo;
+      }
+    });
+  };
+
+  const isDisabled = todo === "";
 
   return (
     <div>
@@ -39,11 +47,18 @@ const Form: React.VFC = () => {
           onChange={(e) => setTodo(e.target.value)}
           value={todo}
         />
-        <button disabled={isUncreable}>追加</button>
+        <button disabled={isDisabled}>追加</button>
       </form>
       <div>
         {lists.map((list: List, index: number) => {
-          return <TodoItem list={list} index={index} deleteTodo={deleteTodo} />;
+          return (
+            <TodoItem
+              list={list}
+              index={index}
+              deleteTodo={deleteTodo}
+              editTodo={editTodo}
+            />
+          );
         })}
       </div>
     </div>
