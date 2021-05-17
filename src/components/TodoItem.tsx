@@ -12,7 +12,7 @@ type Props = {
 const TodoItem: React.VFC<Props> = ({ list, index, deleteTodo, editTodo }) => {
   const [currentTodo, setCurrentTodo] = useState(list.todo);
 
-  const disabled = currentTodo === "";
+  const isDisabled = currentTodo === "";
 
   return (
     <div>
@@ -33,7 +33,7 @@ const TodoItem: React.VFC<Props> = ({ list, index, deleteTodo, editTodo }) => {
             value={currentTodo}
           />
           <button
-            disabled={disabled}
+            disabled={isDisabled}
             onClick={(e) => {
               e.preventDefault();
               editTodo(currentTodo, index);

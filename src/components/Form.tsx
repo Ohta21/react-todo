@@ -16,22 +16,22 @@ const Form: React.VFC = () => {
     setTodo("");
   };
 
-  const deleteTodo = (index2: number) => {
+  const deleteTodo = (deleteIndex: number) => {
     const deleteFilter = lists.filter((list, index) => {
-      return index2 !== index;
+      return deleteIndex !== index;
     });
     setLists(deleteFilter);
   };
 
-  const editTodo = (todo: string, index2: number) => {
+  const editTodo = (todo: string, editIndex: number) => {
     const editLists = lists.map((list, index) => {
-      if (index2 === index) {
+      if (editIndex === index) {
         lists.list = todo;
       }
     });
   };
 
-  const disabled = todo === "";
+  const isDisabled = todo === "";
 
   return (
     <div>
@@ -47,7 +47,7 @@ const Form: React.VFC = () => {
           onChange={(e) => setTodo(e.target.value)}
           value={todo}
         />
-        <button disabled={disabled}>追加</button>
+        <button disabled={isDisabled}>追加</button>
       </form>
       <div>
         {lists.map((list: List, index: number) => {
