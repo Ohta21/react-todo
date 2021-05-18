@@ -2,16 +2,12 @@ import { useState } from "react";
 import React from "react";
 import TodoItem from "./TodoItem";
 
-export type List = {
-  todo: string;
-};
-
 const Form: React.VFC = () => {
   const [todo, setTodo] = useState("");
-  const [lists, setLists] = useState<List[]>([]);
+  const [lists, setLists] = useState<string[]>([]);
 
   const addTodo = (todo: string) => {
-    const addList = [...lists, { todo }]; //[todo: "勉強",todo:"走る",todo: "夜ご飯買う"]
+    const addList = [...lists, todo];
     setLists(addList);
     setTodo("");
   };
@@ -26,9 +22,11 @@ const Form: React.VFC = () => {
   const editTodo = (todo: string, editIndex: number) => {
     const editLists = lists.map((list, index) => {
       if (editIndex === index) {
-        lists.list = todo;
+        list = todo;
       }
+      return list;
     });
+    setLists(editLists);
   };
 
   const isDisabled = todo === "";
@@ -50,7 +48,7 @@ const Form: React.VFC = () => {
         <button disabled={isDisabled}>追加</button>
       </form>
       <div>
-        {lists.map((list: List, index: number) => {
+        {lists.map((list: string, index: number) => {
           return (
             <TodoItem
               list={list}
