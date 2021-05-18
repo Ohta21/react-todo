@@ -1,22 +1,21 @@
 import React from "react";
 import { useState } from "react";
-import { List } from "./Form";
 
 type Props = {
-  list: List;
+  list: string;
   index: number;
   deleteTodo: (index: number) => void;
   editTodo: (text: string, index: number) => void;
 };
 
 const TodoItem: React.VFC<Props> = ({ list, index, deleteTodo, editTodo }) => {
-  const [currentTodo, setCurrentTodo] = useState(list.todo);
+  const [currentTodo, setCurrentTodo] = useState(list);
 
   const isDisabled = currentTodo === "";
 
   return (
     <div>
-      {list.todo}
+      {list}
       <button
         onClick={() => {
           deleteTodo(index);
@@ -37,7 +36,6 @@ const TodoItem: React.VFC<Props> = ({ list, index, deleteTodo, editTodo }) => {
             onClick={(e) => {
               e.preventDefault();
               editTodo(currentTodo, index);
-              setCurrentTodo("");
             }}
           >
             編集
